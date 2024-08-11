@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Basic -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <title>My Cryptoportfolio | An open-source cryptocurrency portfolio tracker</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Search Engine -->
+  <meta name="description"
+    content="An open-source multi-device cryptocurrency portfolio tracker. No login required. No cookies or ads. Users remain completely anonymous.">
+  <meta name="google-site-verification" content="Gchg65vzQgCRJlQinNLIZi0XRvylx4kTPrMrK_Rsbis" />
+  <meta name="image"
+    content="https://raw.githubusercontent.com/rene78/My-Cryptoportfolio/master/img/MCP_Social_Image.png">
+  <link rel="canonical" href="https://my-cryptoportfolio.renek.cc" />
+  <meta name="keywords" content="portfolio, cryptocurrency, webapp, azure-functions, cryptocurrencies, portfolio-page, portfolio-analysis, bitcoin-price, cryptocurrency-price-ticker, cryptocurrency-website, mongodb-atlas, cryptocomparecryptocompare-api, ethereum-price, portfolio-management, cryptocurrency-portfolio,cryptocurrency-prices"/>
+
+  <!-- Schema.org for Google -->
+  <meta itemprop="name" content="My Cryptoportfolio">
+  <meta itemprop="description" content="An open-source cryptocurrency portfolio tracker">
+  <meta itemprop="image"
+    content="https://raw.githubusercontent.com/rene78/My-Cryptoportfolio/master/img/MCP_Social_Image.png">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Open Graph general (Facebook, Twitter, ...) -->
+  <meta property="og:title" content="My Cryptoportfolio">
+  <meta property="og:description" content="An open-source cryptocurrency portfolio tracker">
+  <meta property="og:image"
+    content="https://raw.githubusercontent.com/rene78/My-Cryptoportfolio/master/img/MCP_Social_Image.png">
+  <meta property="og:logo"
+    content="https://raw.githubusercontent.com/rene78/My-Cryptoportfolio/main/img/android-chrome-512x512.png">
+  <meta property="og:url" content="https://my-cryptoportfolio.renek.cc">
+  <meta property="og:site_name" content="My Cryptoportfolio">
+  <meta property="og:type" content="website">
+
+  <!-- Favicon related -->
+  <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
+  <link rel="manifest" href="img/site.webmanifest">
+  <link rel="mask-icon" href="img/safari-pinned-tab.svg" color="#5bbad5">
+  <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="msapplication-config" content="img/browserconfig.xml">
+  <meta name="theme-color" content="#ffffff">
+
+  <!-- style related -->
+  <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+</head>
+
+<body>
+  <header class="header">
+    <a href="" class="logo" title="My Cryptoportfolio Homepage">MCP <svg class="app-logo">
+        <use xlink:href="img/icons.svg#app-logo"></use>
+      </svg></a>
+    <input class="menu-btn" type="checkbox" id="menu-btn" />
+    <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
+    <ul class="menu">
+      <li><a id="chart-link" href="javascript:void(0)" onclick="toggleSegmentDisplay('.chart')" title="xx">xxChartxx</a>
+      </li>
+      <li><a id="edit-portfolio-link" href="javascript:void(0)" onclick="toggleSegmentDisplay('.edit-portfolio')"
+          title="xx">xxEdit Portfolioxx</a></li>
+      <li><a id="faq-link" href="javascript:void(0)" onclick="toggleSegmentDisplay('.faq')" title="xx">xxFAQxx</a></li>
+
+      </li>
+      <li> <select id="lang-selection" onchange="changeAppLanguage()">
+          <option value="en">en</option>
+          <option value="tel">tel</option>
+        </select></li>
+        <li><a id="forum-link" href="javascript:void(0)" onclick="toggleSegmentDisplay('.forum')" title="xx">xxMorexx</a>
+    </ul>
+  </header>
+  <main class="main">
+    <div id="alert">
+      <span class="alert-close-btn" onclick="closeAlert()">&times;</span>
+      <span id=alert-text></span>
+    </div>
+    <div id="display-portfolio"></div>
+    <div class="chart">
+      <button id="chart-button" onclick="toggleSegmentDisplay('.chart')" class="close" title="xx"
+        aria-label="Close the Chart">&times;</button>
+      <h1 id="chart-heading" title="xx">xxPortfolio Weighting</h1>
+      <canvas id="chart-canvas"></canvas>
+    </div>
+
+    <div class="edit-portfolio"></div>
+
+    <div class="faq">
+      <button id="faq-button" onclick="toggleSegmentDisplay('.faq')" class="close" title="Close the FAQ"
+        aria-label="Close the FAQ">&times;</button>
+      <h1>FAQ</h1>
+
+      <details id=question1>
+        <summary>
+          <h2>xxWhat are the advantages of this portfolio app compared to others?</h2>
+        </summary>
+        <ul>
+          <li><b>xx Not-for-profit.</b> This app was solely written for my personal use and as an exercise. But I'd be
+            glad
+            if you'd find it useful, too. The source code can be accessed on <a
+              href="https://github.com/rene78/My-Cryptoportfolio">Github.</a></li>
+          <li><b>xx Ad-free.</b> No annoying ads, which slow down page load and impair user experience.</li>
+          <li><b>xx Cookie-free.</b> No user information is saved to servers.</li>
+          <li><b>xx Hassle-free.</b> Personal portfolio can be accessed via a unique URL. No login required.</li>
+          <li><b>xx Web app.</b> No installation needed.</li>
+          <li><b>xx Responsive.</b> Works on all devices.</li>
+          <img src="img/multi-devices.png" alt="Multi Devices">
+        </ul>
+      </details>
+      <details id=question2>
+        <summary>
+          <h2>xxIs it safe to enter my portfolio on this site?</h2>
+        </summary>
+        <p>As long as you don't share your personal portfolio URL your data should be safe. All portfolios are saved to
+          the database in a completely anonymous fashion with no link to the user whatsoever. This web app does not
+          collect any cookies (except third-party cookies from Disqus), does not have ads and is 100% open source. The
+          source code can be viewed and changed on
+          Github (<a href="https://github.com/rene78/My-Cryptoportfolio">My Cryptoportfolio)</a>.</p>
+      </details>
+      <details id=question3>
+        <summary>
+          <h2>xxHow to use the app?</h2>
+        </summary>
+        <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/aPPmpXDy4LM" frameborder="0"
+          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </details>
+      <details id=question4>
+        <summary>
+          <h2>xxCan I support the development?</h2>
+        </summary>
+        <p>This would be very much appreciated! There are three ways:</p>
+        <ol>
+          <li>Leave your suggestions in the forum on this site</li>
+          <li>Even better: If you know some JS, HTML and CSS you can <a
+              href="https://github.com/rene78/My-Cryptoportfolio">improve the app</a></li>
+          <li>You can send me a tip. <div class="tallypay" data-user="rene78" data-size="button" data-button_text="Buy Me a Coffee" ></div></li>
+        </ol>
+      </details>
+      <details id=question5>
+        <summary>
+          <h2>xxWhere are the coin prices coming from?</h2>
+        </summary>
+        <p>From the <a href="https://min-api.cryptocompare.com/">Cryptocampare API</a>.</p>
+      </details>
+      <details id=question6>
+        <summary>
+          <h2>xxWhy does this website have such a weird logo?</h2>
+        </summary>
+        <p>It is a celtic Triple Crescent Moon symbol. Triple moons symbolize change, just like the blockchain
+          technology
+          in general. And "moon" - as in "to the moon"...</p>
+      </details>
+    </div>
+
+  </main>
+  <script src="data/coinlist-min.js"></script>
+  <script src="data/coinPricesExample.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
+  <script src="data/translations.js"></script>
+  <script src="main.js"></script>
+  <script src="https://tallycoin.app/plugin/tallypay-v3.js" type="text/javascript"></script>
+  <script id="dsq-count-scr" src="//https-rene78-github-io-my-cryptoportfolio.disqus.com/count.js" async></script>
+</body>
+
+</html>

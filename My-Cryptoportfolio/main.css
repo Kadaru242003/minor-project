@@ -1,0 +1,724 @@
+/* #region CSS RELATED TO GENERAL PAGE LAYOUT */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  /* font-family: 'Droid Serif', serif; */
+  /* background-color: linen; */
+}
+
+main {
+  padding: 8px;
+}
+
+a {
+  color: #000;
+}
+
+h1 {
+  text-align: center;
+}
+
+/*Word break important for smaller screens to prevent overflow of table headers.*/
+th {
+  word-break: break-word;
+}
+/* #endregion */
+
+/* #region CSS RELATED TO ALERT MESSAGES*/
+#alert {
+  padding: 20px;
+  color: white;
+  opacity: 0;
+  display: none;
+  transition: opacity 0.3s;
+  margin-bottom: 15px;
+}
+
+.fail {background-color: #f44336;}
+.success {background-color: #4CAF50;}
+.info {background-color: #2196F3;}
+.warning {background-color: #ff9800;}
+
+.alert-close-btn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.alert-close-btn:hover {
+  color: black;
+}
+
+/* #endregion */
+
+/* #region CSS RELATED TO NAVIGATION MENU */
+
+/* header */
+
+.header {
+  background-color: #fff;
+  box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, .1);
+  /* position: fixed; */
+  display: inline-block;
+  width: 100%;
+  z-index: 3;
+}
+
+.header ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  overflow: hidden;
+  background-color: #fff;
+}
+
+.header li a {
+  display: block;
+  padding: 20px 20px;
+  border-right: 1px solid #f4f4f4;
+  text-decoration: none;
+}
+
+.header li a:hover {
+  background-color: #f4f4f4;
+}
+
+#chart-link:hover {
+  background-color: #d0ddd2;
+}
+
+#edit-portfolio-link:hover {
+  background-color: #ffe6bc;
+}
+
+#faq-link:hover {
+  background-color: #c9e7fc;
+}
+
+.header .logo {
+  /* display: block; */
+  float: left;
+  font-size: 2em;
+  padding: 10px 20px;
+  text-decoration: none;
+}
+
+/* menu */
+
+.header .menu {
+  clear: both;
+  max-height: 0;
+  transition: max-height .2s ease-out;
+}
+
+/* menu icon */
+
+.header .menu-icon {
+  cursor: pointer;
+  /* display: inline-block; */
+  float: right;
+  padding: 28px 20px;
+  position: relative;
+  user-select: none;
+}
+
+/*Center line of the hamburger*/
+.header .menu-icon .navicon {
+  background: #333;
+  display: block;
+  height: 2px;
+  position: relative;
+  transition: background .2s ease-out;
+  width: 18px;
+}
+
+/*After: Upper line, Before: Lower line of the hamburger*/
+.header .menu-icon .navicon:before,
+.header .menu-icon .navicon:after {
+  background: #333;
+  content: '';
+  display: block;
+  height: 100%;
+  position: absolute;
+  transition: all .2s ease-out;
+  width: 100%;
+}
+
+.header .menu-icon .navicon:before {
+  top: 5px;
+}
+
+.header .menu-icon .navicon:after {
+  top: -5px;
+}
+
+/* menu btn */
+
+.header .menu-btn {
+  display: none;
+}
+
+.header .menu-btn:checked~.menu {
+  max-height: fit-content;
+}
+
+.header .menu-btn:checked~.menu-icon .navicon {
+  background: transparent;
+}
+
+.header .menu-btn:checked~.menu-icon .navicon:before {
+  transform: rotate(-45deg);
+}
+
+.header .menu-btn:checked~.menu-icon .navicon:after {
+  transform: rotate(45deg);
+}
+
+.header .menu-btn:checked~.menu-icon .navicon:before,
+.header .menu-btn:checked~.menu-icon .navicon:after {
+  top: 0;
+}
+
+/* Original setting, which I don't understand and thus replaced with the above
+.header .menu-btn:checked~.menu-icon:not(.steps) .navicon:before,
+.header .menu-btn:checked~.menu-icon:not(.steps) .navicon:after {
+  top: 0;
+} */
+
+/* Language selector */
+.header li select {
+  display: block;
+  padding: 20px 30px 20px 5px;
+  border-right: 1px solid #f4f4f4;
+  text-decoration: none;
+  border-style: none;
+  width: 100%;
+  font: inherit;
+  /* Remove original arrows */
+  -webkit-appearance: none;
+  background: url(img/arrowdown.png) no-repeat right;
+  background-size: 1.5em;
+}
+
+@media (max-width: 700px){
+  .header li select {
+    padding: 20px 30px 20px 20px;
+    background-position-x: 96%;
+  }
+}
+
+.header li select:hover {
+  background-color: #f4f4f4;
+  cursor: pointer;
+}
+
+@media (min-width: 700px) {
+  .header li {
+    float: left;
+  }
+
+  .header li a {
+    padding: 20px 25px;
+  }
+
+  .header .menu {
+    clear: none;
+    float: right;
+    max-height: none;
+  }
+
+  .header .menu-icon {
+    display: none;
+  }
+}
+
+/* #endregion */
+
+/* #region CSS RELATED TO PORTFOLIO DISPLAY */
+
+/* Change mouse cursor to hand when hovering over table headings*/
+#portfolio-table th {
+  cursor: pointer;
+}
+
+/* Align everything in the table header except the one with id=coin-name to the right*/
+#portfolio-table th:not(#coin-name) {
+  text-align: right;
+}
+
+/*Sort arrows*/
+#portfolio-table .arrows-name {
+  display: inline-block
+}
+
+#portfolio-table .triangle-down {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 8px solid #555;
+}
+
+#portfolio-table .triangle-up {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 8px solid #555;
+}
+
+/* Align text in table cell with id=coin-name to the left */
+#coin-name {
+  text-align: left;
+}
+
+/* Select all td elements except those, who are the first child of something */
+#portfolio-table td:not(:first-child) {
+  text-align: right;
+}
+
+.cryptoUp {
+  color:  green;
+}
+
+.cryptoDown  {
+  color: red;
+}
+
+#portfolio-table thead, tfoot {
+  background-color: #F0F8FF;
+  font-weight: bold;
+}
+
+#portfolio-table tr:nth-child(even) {
+  background-color: #F0F0F0;
+}
+
+#portfolio-table {
+  margin: 0 auto;
+  width: 100%;
+}
+
+/*Set width to 70%*/
+@media (min-width: 700px) {
+  #portfolio-table {
+    width: 70%;
+  }
+}
+
+.watermark {
+  position: relative;
+  top: -85px;
+  left: calc(50% - 150px);
+  transform: rotate(15deg);
+  font-size: 3em;
+  font-family: Impact, Charcoal, sans-serif;
+  color: gray;
+  opacity: 0.3;
+  pointer-events: none;
+  display: none;
+}
+/* #endregion */
+
+/* #region CSS RELATED TO CHART DISPLAY */
+.chart {
+  display: none;
+  margin: 0 auto;
+  background-color: #d0ddd2;
+  /* width: 100px;
+  height: 100px; */
+}
+
+/*Set width to 70%*/
+@media (min-width: 700px) {
+  .chart {
+    width: 70%;
+  }
+}
+
+/*Set width to 40% for higher resolution displays. Else chart is too large*/
+@media (min-width: 1050px) {
+  .chart {
+    width: 40%;
+  }
+}
+/* #endregion */
+
+/* #region CSS RELATED TO EDIT TABLE */
+
+.edit-portfolio {
+  display: none;
+  background-color: #ffe6bc;
+  /* width: 70%; */
+  margin: 0 auto;
+}
+
+/*Extend display table to 70%*/
+@media (min-width: 600px) {
+  .edit-portfolio {
+    width: 70%;
+  }
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  font-size: 28px;
+  font-weight: bold;
+  float: right;
+  margin: 5px;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+input {
+  /* background-color: red; */
+  width: 100%;
+}
+
+/*Hide the 2 table columns with ticker symbol and name */
+#portfolio-update-form tr > *:nth-child(5),
+#portfolio-update-form tr > *:nth-child(6) {
+  display: none;
+}
+
+#portfolio-update-form tr:nth-child(even) {
+  background-color: #F0F0F0;
+}
+
+#portfolio-update-form tr:nth-child(odd) {
+  background-color: white;
+}
+
+#portfolio-update-form td:not(#add-token),
+#portfolio-update-form th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+#add-token {
+  text-align: center;
+  background-color: darkslategray;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  cursor: pointer;
+  font-size: 2em;
+  color: white;
+}
+
+#add-token:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+.dustbin,
+.app-logo {
+  /* fill:grey; */
+  width: 30px;
+  height: 30px;
+}
+
+.delete-cell {
+  cursor: pointer;
+}
+
+.delete-cell:hover > .dustbin {
+  fill: red;
+}
+
+#portfolio-update-form {
+  margin: 0 auto;
+  /* width: 70%; */
+  border-collapse: collapse;
+  /* background-color: lightgrey; */
+}
+
+.edit-portfolio th {
+  background-color: #F0F8FF;
+}
+
+/*Coin selection dropdown*/
+/* Dropdown Content (Hidden by Default) */
+.dropdown-button {
+  background-color: inherit;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+  position: relative;
+  padding: 10px 30px 10px 10px;
+}
+
+.dropdown-button:hover, .dropdown-button:focus {
+  background-color: #f1f7f1;
+}
+
+.my-input {
+  background-image: url('img/searchicon.png');
+  background-position: 14px center;
+  background-repeat: no-repeat;
+  font-size: 16px;
+  padding: 14px 20px 12px 45px;
+  border: none;
+  border-bottom: 1px solid #ddd;
+  width: inherit;
+}
+
+.my-input:focus {outline: 3px solid #ddd;}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f6f6f6;
+  min-width: 230px;
+  overflow: auto;
+  border: 1px solid #ddd;
+  z-index: 1;
+}
+
+.dropdown-content a:not(.nothing-found) {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #ddd;}
+
+.active {
+  background-color: #ddd;
+}
+
+.nothing-found {
+  pointer-events: none;
+  cursor: default;
+  color: grey;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-button .triangle-down {
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 8px solid #555;
+  position: absolute;
+  top: 40%;
+  right: 5px;
+}
+
+/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+.show-dropdown-content {display:block;}
+
+.fiat {
+  float: right;
+  margin: 0px 8px 5px;
+}
+
+.fiat-label {
+  padding: 8px;
+  background-color: #F0F8FF;
+}
+
+.fiat-select {
+  padding: 8px;
+  background-color: white;
+}
+
+.save-button, .delete-portfolio-button {
+  padding: 8px 25px 8px 30px;
+  margin: 8px;
+  color: white;
+  font-size: 1.2em;
+  cursor: pointer;
+  border-radius: 7px;
+  border-color: gray;
+}
+
+.save-button {
+  float: right;
+  clear: both;
+  background-color: green;
+}
+
+.save-button:hover {
+  background-color: darkgreen;
+}
+
+.deactivate {
+  pointer-events: none;
+  filter: grayscale(100%) blur(1px);
+}
+
+.loading-animation {
+  border: 4px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 4px solid #3498db;
+  width: 14px;
+  height: 14px;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+  display: none;
+  left: 4px;
+  top: 10px;
+  position: absolute;
+}
+
+.show {
+  display: inline-block;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+#upload-icon {
+  width: 30px;
+  height: 30px;
+  vertical-align: middle;
+}
+
+.delete-portfolio-button {
+  padding: 8px 25px;
+  float: left;
+  background-color: red;
+}
+
+.delete-portfolio-button:hover {
+  background-color: darkred;
+}
+
+/*Increase width of delete and save button to 100% on really small displays*/
+@media (max-width: 370px) {
+  .save-button, .delete-portfolio-button {
+    float: none;
+    display: block;
+    width: 80%;
+    margin: 5px auto;
+  }
+}
+
+#edit-table-foot {
+  clear: both;
+}
+/* #endregion */
+
+/* #region CSS RELATED TO FAQ AND FORUM */
+.faq {
+  display: none;
+  margin: 0 auto;
+  background-color: #c9e7fc;
+}
+
+.faq p {
+  padding: 5px;
+}
+
+.faq h2 {
+  padding: 5px 20px 5px 5px;
+}
+
+.faq li {
+  overflow-wrap: break-word; /*needed due to the long bitcoin address*/
+}
+
+iframe {
+  max-width: 100%;
+}
+
+summary {
+  transition: background .75s ease;
+  width: 100%;
+  outline: 0;
+  font-size: 85%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  border-top: 1px solid #D3D3D3;
+}
+
+details p {
+  padding: 0 25px 15px 25px;
+  margin: 0;
+  text-shadow: none;
+  text-align: justify;
+  line-height: 1.3em;
+}
+
+summary::after {
+  content: "";
+  border: solid black;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  right: 10px;
+  position: relative;
+}
+
+details[open] summary::after {
+  transform: rotate(-135deg);
+  -webkit-transform: rotate(-135deg);
+}
+
+details[open] summary:hover {
+  background: none;
+}
+
+summary:hover {
+  background: #d3d3d3;
+}
+
+details summary::-webkit-details-marker {
+  display: none;
+}
+
+#disqus_thread {
+  padding: 5px;
+}
+
+/*Extend display table to 70%*/
+@media (min-width: 600px) {
+  .faq {
+    width: 70%;
+  }
+}
+
+.faq img {
+  width: 95%;
+  max-width: 400px;
+  height: auto;
+}
+
+/*Toggle display of 4 main segments of page (charts, edit table, faq and forum)*/
+.toggle-segment-display {
+  display: block;
+}
+/* #endregion */
