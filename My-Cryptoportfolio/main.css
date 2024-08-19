@@ -100,9 +100,6 @@ th {
   background-color: #ffe6bc;
 }
 
-#faq-link:hover {
-  background-color: #c9e7fc;
-}
 
 .header .logo {
   /* display: block; */
@@ -627,6 +624,14 @@ input {
   clear: both;
 }
 /* #endregion */
+
+#faq-link{
+  color:white;
+}
+#forum-link{
+  color:white;
+}
+
 
 /* #region CSS RELATED TO FAQ AND FORUM */
 .faq {
