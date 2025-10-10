@@ -41,13 +41,6 @@
 
 ---
 
-## 🖼️ Screenshots
-| Dashboard | Portfolio Analytics |
-|------------|--------------------|
-| ![Dashboard](screenshots/dashboard.png) | ![Analytics](screenshots/analytics.png) |
-
----
-
 ## 📈 Future Enhancements
 - Add authentication for multiple users  
 - Integrate ML models for crypto price prediction  
