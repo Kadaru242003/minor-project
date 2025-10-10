@@ -1,6 +1,11 @@
 🪙 Crypto Portfolio Management System
 📘 Overview
+<p align="center">
+  <img src="https://your-image-link.com/banner.png" width="600" alt="Crypto Portfolio Banner">
+</p>
 
+<h1 align="center">🪙 Crypto Portfolio Management System</h1>
+<p align="center">A data-driven web app to track and analyze your cryptocurrency investments</p>
 The Crypto Portfolio Management System is a data-driven web application designed to help users track, analyze, and manage their cryptocurrency investments in real time. It provides users with insights into portfolio performance, price fluctuations, and market trends through an intuitive interface.
 
 ⚙️ Features
