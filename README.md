@@ -4,11 +4,6 @@
   It provides users with insights into portfolio performance, price fluctuations, and market trends through an intuitive interface.
 </p>
 
-<p align="center">
-  <img src="https://img.shields.io/badge/Python-3.9-blue?logo=python">
-  <img src="https://img.shields.io/badge/Flask-Framework-green?logo=flask">
-  <img src="https://img.shields.io/badge/License-MIT-yellow">
-</p>
 
 ---
 
